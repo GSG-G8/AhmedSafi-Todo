@@ -1,0 +1,27 @@
+{
+  "name": "ahmedsafi-todo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --watch",
+    "coverage": "jest --coverage",
+    "live": "live-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GSG-G8/AhmedSafi-Todo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GSG-G8/AhmedSafi-Todo/issues"
+  },
+  "homepage": "https://github.com/GSG-G8/AhmedSafi-Todo#readme",
+  "devDependencies": {
+    "@types/jest": "^25.1.2",
+    "jest": "^25.1.0",
+    "live-server": "^1.2.1"
+  }
+}
