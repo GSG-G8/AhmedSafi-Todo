@@ -127,3 +127,81 @@ describe("should return an array without the deleted object", () => {
     expect(actual3).toEqual(expected);
   });
 });
+
+describe("should change the done state of the specified object", () => {
+  test("should change the done state of the specified object", () => {
+    const actual = logic.markTodo(
+      [
+        { todo: "play VScode", id: 1, done: false },
+        { todo: "wake up", id: 2, done: false },
+        { todo: "drink coffee", id: 9, done: false },
+        { todo: "watch anime", id: 10, done: false }
+      ],
+      1
+    );
+    const expected = [
+      { todo: "play VScode", id: 1, done: true },
+      { todo: "wake up", id: 2, done: false },
+      { todo: "drink coffee", id: 9, done: false },
+      { todo: "watch anime", id: 10, done: false }
+    ];
+    expect(actual).toEqual(expected);
+  });
+  test("should change the done state of the specified object", () => {
+    const actual1 = logic.markTodo(
+      [
+        { todo: "play VScode", id: 1, done: true },
+        { todo: "wake up", id: 2, done: false },
+        { todo: "drink coffee", id: 9, done: false },
+        { todo: "watch anime", id: 10, done: false }
+      ],
+      1
+    );
+    const actual2 = logic.markTodo(actual1, 10);
+    const expected = [
+      { todo: "play VScode", id: 1, done: false },
+      { todo: "wake up", id: 2, done: false },
+      { todo: "drink coffee", id: 9, done: false },
+      { todo: "watch anime", id: 10, done: true }
+    ];
+    expect(actual2).toEqual(expected);
+  });
+  test("should change the done state of the specified object", () => {
+    const actual = logic.markTodo(
+      [
+        { todo: "play VScode", id: 1, done: false },
+        { todo: "wake up", id: 2, done: false },
+        { todo: "drink coffee", id: 9, done: false },
+        { todo: "watch anime", id: 10, done: true }
+      ],
+      5
+    );
+    const expected = [
+      { todo: "play VScode", id: 1, done: false },
+      { todo: "wake up", id: 2, done: false },
+      { todo: "drink coffee", id: 9, done: false },
+      { todo: "watch anime", id: 10, done: true }
+    ];
+    expect(actual).toEqual(expected);
+  });
+  test("should change the done state of the specified object", () => {
+    const actual1 = logic.addTodo(
+      [
+        { todo: "play VScode", id: 1, done: false },
+        { todo: "wake up", id: 2, done: false },
+        { todo: "drink coffee", id: 9, done: false },
+        { todo: "watch anime", id: 10, done: true }
+      ],
+      "have lunch"
+    );
+    const actual2 = logic.deleteTodo(actual1, 10);
+    const actual3 = logic.markTodo(actual2, 11);
+    const expected = [
+      { todo: "play VScode", id: 1, done: false },
+      { todo: "wake up", id: 2, done: false },
+      { todo: "drink coffee", id: 9, done: false },
+      { todo: "have lunch", id: 11, done: true }
+    ];
+    expect(actual3).toEqual(expected);
+  });
+});
