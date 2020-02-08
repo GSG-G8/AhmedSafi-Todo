@@ -4,6 +4,7 @@
 (function() {
   // This is the dom node where we will keep our todo
   const container = document.getElementById("todo-container");
+  const containerNodeChileds = container.childNodes;
   const addTodoForm = document.getElementById("add-todo");
 
   let state = JSON.parse(localStorage.getItem("state"));
@@ -55,21 +56,26 @@
   }
 
   // you should not need to change this function
-  var update = function(newState) {
+  const update = function(newState) {
     state = newState;
     renderState(state);
   };
 
   // you do not need to change this function
-  var renderState = function(state) {
-    var todoListNode = document.createElement("ul");
+  // I had to make changes on this function - AhmedSafi -
+  const renderState = function(state) {
+    const todoListNode = document.createElement("ul");
+    const completedTodoNode = document.createElement("ul");
+
 
     state.forEach(function(todo) {
-      todoListNode.appendChild(createTodoNode(todo));
+      if (todo.done) completedTodoNode.appendChild(createTodoNode(todo));
+      else todoListNode.appendChild(createTodoNode(todo));
     });
 
     // you may want to add a class for css
-    container.replaceChild(todoListNode, container.firstChild);
+    container.replaceChild(todoListNode, containerNodeChileds[0]);
+    container.replaceChild(completedTodoNode, containerNodeChileds[1]);
   };
 
   if (container) renderState(state);
