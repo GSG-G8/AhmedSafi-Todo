@@ -9,6 +9,13 @@
 
   let state = JSON.parse(localStorage.getItem("state"));
   if (!state) state = [];
+  if(state.length !== 0){
+    let counter = state[state.length - 1]['id'];
+    while(counter !== 0){
+      todoFunctions.generateId();
+      --counter;
+    }
+  }
 
   // This function takes a todo, it returns the DOM node representing that todo
   const createTodoNode = function(todo) {
