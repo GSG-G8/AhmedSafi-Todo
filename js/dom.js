@@ -9,6 +9,13 @@
 
   let state = JSON.parse(localStorage.getItem("state"));
   if (!state) state = [];
+  if (state.length !== 0) {
+    let counter = state[state.length - 1]["id"];
+    while (counter !== 0) {
+      todoFunctions.generateId();
+      --counter;
+    }
+  }
 
   // This function takes a todo, it returns the DOM node representing that todo
   const createTodoNode = function(todo) {
@@ -77,8 +84,8 @@
     });
 
     // you may want to add a class for css
-    todoListNode.classList.add('todoLists');
-    completedTodoNode.classList.add('todoLists');
+    todoListNode.classList.add("todoLists");
+    completedTodoNode.classList.add("todoLists");
     container.replaceChild(todoListNode, containerNodeChileds[2]);
     container.replaceChild(completedTodoNode, containerNodeChileds[6]);
   };
