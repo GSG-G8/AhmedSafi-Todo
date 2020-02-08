@@ -3,14 +3,11 @@
 // it keeps everything inside hidden from the rest of our application
 (function() {
   // This is the dom node where we will keep our todo
-  var container = document.getElementById("todo-container");
-  var addTodoForm = document.getElementById("add-todo");
+  const container = document.getElementById("todo-container");
+  const addTodoForm = document.getElementById("add-todo");
 
-  var state = [
-    { id: -3, description: "first todo" },
-    { id: -2, description: "second todo" },
-    { id: -1, description: "third todo" }
-  ]; // this is our initial todoList
+  let state = JSON.parse(localStorage.getItem("state"));
+  if (!state) state = [];
 
   // This function takes a todo, it returns the DOM node representing that todo
   const createTodoNode = function(todo) {
@@ -25,11 +22,13 @@
 
     deleteButtonNode.addEventListener("click", function(event) {
       const newState = todoFunctions.deleteTodo(state, todo.id);
+      localStorage.setItem("state", JSON.stringify(newState));
       update(newState);
     });
 
     markButtonNode.addEventListener("click", function(event) {
       const newState = todoFunctions.markTodo(state, todo.id);
+      localStorage.setItem("state", JSON.stringify(newState));
       update(newState);
     });
     todoNode.appendChild(descriptionSpanNode);
@@ -44,17 +43,13 @@
     return todoNode;
   };
 
-  // bind create todo form
   if (addTodoForm) {
     addTodoForm.addEventListener("submit", function(event) {
-      // https://developer.mozilla.org/en-US/docs/Web/Events/submit
-      // what does event.preventDefault do?
-      // what is inside event.target?
-
-      var description = "?"; // event.target ....
-
-      // hint: todoFunctions.addTodo
-      var newState = []; // ?? change this!
+      event.preventDefault();
+      const description = event.target.elements[0]["value"];
+      const newState = todoFunctions.addTodo(state, description);
+      localStorage.setItem("state", JSON.stringify(newState));
+      event.target.elements[0]["value"] = "";
       update(newState);
     });
   }
