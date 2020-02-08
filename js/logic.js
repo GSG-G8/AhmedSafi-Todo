@@ -40,7 +40,8 @@ var todoFunctions = {
     return todoFunctions.cloneArrayOfObjects(todos).map(element => {
       if (element.id === idToMark && element.done === false)
         element.done = true;
-      else if (element.id === idToMark && element.done === true) element.done = false;
+      else if (element.id === idToMark && element.done === true)
+        element.done = false;
       return element;
     });
   },

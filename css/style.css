@@ -17,7 +17,7 @@
 .wrapper__form__btn {
   height: 38px;
 }
-.wrapper__form__label{
+.wrapper__form__label {
   position: fixed;
   right: 7000px;
 }
@@ -40,6 +40,6 @@
 .trash__icon {
   margin-right: 5px;
 }
-.todoLists{
-    padding: 5px;
+.todoLists {
+  padding: 5px;
 }
