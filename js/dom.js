@@ -18,6 +18,7 @@
     const markButtonNode = document.createElement("button");
     const trashIcon = document.createElement("i");
     const markIcon = document.createElement("i");
+    const icons = document.createElement("div");
 
     descriptionSpanNode.textContent = todo.todo;
 
@@ -32,13 +33,16 @@
       localStorage.setItem("state", JSON.stringify(newState));
       update(newState);
     });
+    icons.appendChild(deleteButtonNode);
+    icons.appendChild(markButtonNode);
     todoNode.appendChild(descriptionSpanNode);
     deleteButtonNode.appendChild(trashIcon);
     markButtonNode.appendChild(markIcon);
-    todoNode.appendChild(deleteButtonNode);
-    todoNode.appendChild(markButtonNode);
+    todoNode.appendChild(icons);
 
     // add classes for css
+    todoNode.classList.add("todo");
+    deleteButtonNode.classList.add("trash__icon");
     trashIcon.classList.add("fa", "fa-trash");
     markIcon.classList.add("fa", "fa-check");
     return todoNode;
@@ -67,15 +71,16 @@
     const todoListNode = document.createElement("ul");
     const completedTodoNode = document.createElement("ul");
 
-
     state.forEach(function(todo) {
       if (todo.done) completedTodoNode.appendChild(createTodoNode(todo));
       else todoListNode.appendChild(createTodoNode(todo));
     });
 
     // you may want to add a class for css
-    container.replaceChild(todoListNode, containerNodeChileds[0]);
-    container.replaceChild(completedTodoNode, containerNodeChileds[1]);
+    todoListNode.classList.add('todoLists');
+    completedTodoNode.classList.add('todoLists');
+    container.replaceChild(todoListNode, containerNodeChileds[2]);
+    container.replaceChild(completedTodoNode, containerNodeChileds[6]);
   };
 
   if (container) renderState(state);
