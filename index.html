@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"><meta charset="utf-8" />
     <title>tdd todo</title>
     <link
       rel="stylesheet"
@@ -10,13 +12,31 @@
     <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
-    <div id="todo-container">
-      <ul></ul>
-    </div>
-    <form id="add-todo">
-      <input type="text" name="description" value="" required/>
-      <input type="submit" name="" value="Submit" />
-    </form>
+    <main class="wrapper">
+      <form id="add-todo" class="wrapper__form">
+        <h2 class="wrapper__form__heading">What to do?</h2>
+        <label for="todo-description" class="wrapper__form__label">To-do description</label>
+        <input
+          type="text"
+          name="description"
+          value=""
+          id="todo-description"
+          class="wrapper__form__input"
+          required
+        />
+        <input
+          type="submit"
+          name=""
+          value="Submit"
+          class="wrapper__form__btn"
+        />
+      </form>
+      <div id="todo-container">
+        <h2 class="todo__heading">To-do</h2>
+        <ul></ul>
+        <h2 class="completed__heading">Completed</h2>
+      </div>
+    </main>
   </body>
   <script type="text/javascript" src="./js/logic.js"></script>
   <script type="text/javascript" src="./js/dom.js"></script>
