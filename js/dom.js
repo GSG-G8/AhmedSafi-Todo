@@ -6,11 +6,13 @@
   const container = document.getElementById("todo-container");
   const containerNodeChileds = container.childNodes;
   const addTodoForm = document.getElementById("add-todo");
+  const sortBtn = document.getElementById('sort');
 
   let state = JSON.parse(localStorage.getItem("state"));
   if (!state) state = [];
   if (state.length !== 0) {
-    let counter = state[state.length - 1]["id"];
+    let ids = state.map(todo => todo.id);
+    let counter = Math.max(...ids);
     while (counter !== 0) {
       todoFunctions.generateId();
       --counter;
@@ -65,6 +67,12 @@
       update(newState);
     });
   }
+
+  sortBtn.addEventListener('click', () => {
+    const newState = todoFunctions.sortTodos(state, todoFunctions.sortByName);
+    localStorage.setItem("state", JSON.stringify(newState));
+    update(newState);
+  })
 
   // you should not need to change this function
   const update = function(newState) {

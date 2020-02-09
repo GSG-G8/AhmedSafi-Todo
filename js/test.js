@@ -205,3 +205,24 @@ describe("should change the done state of the specified object", () => {
     expect(actual3).toEqual(expected);
   });
 });
+
+describe("sort test", () => {
+  test("sort by name", () => {
+    const actual = logic.sortTodos(
+      [
+        { todo: "play VScode", id: 1, done: false },
+        { todo: "wake up", id: 2, done: false },
+        { todo: "drink coffee", id: 9, done: false },
+        { todo: "have lunch", id: 11, done: true }
+      ],
+      logic.sortByName
+    );
+    const expected = [
+      { todo: "drink coffee", id: 9, done: false },
+      { todo: "have lunch", id: 11, done: true },
+      { todo: "play VScode", id: 1, done: false },
+      { todo: "wake up", id: 2, done: false }
+    ];
+    expect(actual).toEqual(expected);
+  });
+});
