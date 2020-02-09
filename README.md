@@ -1,6 +1,6 @@
 # AhmedSafi-Todo
 
-## [To-do-list-web-app](https://gsg-g8.github.io/To-do-list-web-app/)
+## [To-do-list-web-app](https://gsg-g8.github.io/AhmedSafi-Todo/)
 
 
 This is a to-do list web app that I've been working on as a homework project assigned to me as a G8 chort codecademy student in Gaza sky geeks
