@@ -37,7 +37,7 @@ var todoFunctions = {
     });
   },
   markTodo: function(todos, idToMark) {
-    return todoFunctions.cloneArrayOfObjects(todos).map(element => {
+    return this.cloneArrayOfObjects(todos).map(element => {
       if (element.id === idToMark && element.done === false)
         element.done = true;
       else if (element.id === idToMark && element.done === true)
@@ -45,11 +45,15 @@ var todoFunctions = {
       return element;
     });
   },
+  sortByName: (x,y) => {
+    const xTodo = x.todo.toLowerCase();
+    const yTodo = y.todo.toLowerCase();
+    if (xTodo < yTodo) return -1;
+    if (xTodo > yTodo) return 1;
+    return 0;
+  },
   sortTodos: function(todos, sortFunction) {
-    // stretch goal! Do this last
-    // should leave the input arguement todos unchanged (you can use cloneArrayOfObjects)
-    // sortFunction will have same signature as the sort function in array.sort
-    // hint: array.slice, array.sort
+    return this.cloneArrayOfObjects(todos).sort((x, y) => sortFunction(x, y));
   }
 };
 
